@@ -22,4 +22,5 @@ def com_dis(z,args):
         return res[0]
 
 
-
+def lom_dist(z,args):
+        return (1+z)*com_dis(z,args)
