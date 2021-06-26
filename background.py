@@ -15,15 +15,14 @@ def Hub_inv(z,H0,om):
 
 
 # This is the comoving distance
-def com_dis(z,args):
-        res = integ.quad(Hub_inv, 0., z, args=args)
+def com_dis(z,H0,om):
+        res = integ.quad(Hub_inv, 0., z, args=(H0,om))
         return 3e5*res[0]
 
 
 def mu_the(z,H0,om):
         mu = np.zeros(len(z))
-        args = [H0,om]
         for i in range(len(z)):
-                lsd = (1+z[i])*com_dis(z[i],args)
+                lsd = (1+z[i])*com_dis(z[i],H0,om)
                 mu[i] = 5*np.log10(lsd) + 25.
         return mu
